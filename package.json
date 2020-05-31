@@ -33,6 +33,9 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.15.0",
+    "@graphql-codegen/typescript": "^1.15.0",
+    "@graphql-codegen/typescript-operations": "^1.15.0",
     "prettier": "2.0.5"
   },
   "keywords": [
@@ -43,6 +46,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "gql-codegen": "graphql-codegen --config codegen.yaml",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
