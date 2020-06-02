@@ -3128,6 +3128,23 @@ export type Unnamed_1_QueryVariables = {};
 
 export type Unnamed_1_Query = (
   { __typename?: 'Query' }
+  & { placeholderImage?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid?: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
+        & GatsbyImageSharpFluidFragment
+      )> }
+    )> }
+  )> }
+);
+
+export type IndexPageQueryVariables = {};
+
+
+export type IndexPageQuery = (
+  { __typename?: 'Query' }
   & { site?: Maybe<(
     { __typename?: 'Site' }
     & { siteMetadata?: Maybe<(
@@ -3151,4 +3168,27 @@ export type Unnamed_1_Query = (
       ) }
     )> }
   ) }
+);
+
+export type BlogPostBySlugQueryVariables = {
+  slug: Scalars['String'];
+};
+
+
+export type BlogPostBySlugQuery = (
+  { __typename?: 'Query' }
+  & { site?: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata?: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title'>
+    )> }
+  )>, markdownRemark?: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & Pick<MarkdownRemark, 'id' | 'excerpt' | 'html'>
+    & { frontmatter?: Maybe<(
+      { __typename?: 'MarkdownRemarkFrontmatter' }
+      & Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'description'>
+    )> }
+  )> }
 );

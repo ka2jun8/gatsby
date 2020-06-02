@@ -1,12 +1,14 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link, graphql, PageProps } from 'gatsby'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
+import { BlogPostBySlugQuery } from '../types/graphqlTypes'
+import { PageContextData } from '../gatsby-node'
 
-const BlogPostTemplate = ({ data, pageContext, location, }) => {
+const BlogPostTemplate = ({ data, pageContext, location, }: PageProps<BlogPostBySlugQuery, PageContextData>) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
@@ -34,7 +36,7 @@ const BlogPostTemplate = ({ data, pageContext, location, }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {post.frontmatter.data}
+            {post.frontmatter.date}
           </p>
         </header>
         <section dangerouslySetInnerHTML={{__html: post.html}} />
@@ -61,14 +63,14 @@ const BlogPostTemplate = ({ data, pageContext, location, }) => {
           <li>
             {previous && (
               <Link to={`/posts/${previous.fields.slug}`} rel="prev">
-                ← {previous.formatter.title}
+                ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={`/posts/${next.fields.slug}`} rel="next">
-                ← {next.formatter.title}
+                ← {next.frontmatter.title}
               </Link>
             )}
           </li>
